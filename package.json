@@ -1,0 +1,17 @@
+{
+  "name": "bbcscraper",
+  "version": "1.0.0",
+  "description": "food scraper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "scrape": "node recipeScraper.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^7.1.0",
+    "recipe-scraper": "^2.0.0"
+  }
+}
