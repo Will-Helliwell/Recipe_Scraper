@@ -1,6 +1,6 @@
 // import the module
 const recipeScraper = require("recipe-scraper");
-require("urls")
+const urls = require("./urls")
 
 console.log(urls)
 
@@ -11,10 +11,22 @@ async function someAsyncFunc() {
 //   ...
 }
 
-// using Promise chaining
-recipeScraper("https://www.bbcgoodfood.com/recipes/carrot-parsnip-soup").then(recipe => {
+urls.forEach(url => {
+  recipeScraper(url).then(recipe => {
     console.log(recipe)
     // do something with recipe
   }).catch(error => {
     // do something with error
   });
+})
+
+
+
+
+// using Promise chaining
+// recipeScraper("https://www.bbcgoodfood.com/recipes/carrot-parsnip-soup").then(recipe => {
+//     console.log(recipe)
+//     // do something with recipe
+//   }).catch(error => {
+//     // do something with error
+//   });

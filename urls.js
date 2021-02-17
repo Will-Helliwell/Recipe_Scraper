@@ -1,4 +1,4 @@
-let urls = [
+const urls = [
       'https://www.bbcgoodfood.com/recipes/one-pot-prawn-lentil-curry',
       'https://www.bbcgoodfood.com/recipes/coconut-pastries-gujiya',
       'https://www.bbcgoodfood.com/recipes/mulligatawny-soup',
@@ -24,3 +24,5 @@ let urls = [
       'https://www.bbcgoodfood.com/recipes/beef-boston-baked-beans',
       'https://www.bbcgoodfood.com/recipes/chicken-spinach-bacon-alfredo-pasta-bake'
 ]
+
+module.exports = urls
