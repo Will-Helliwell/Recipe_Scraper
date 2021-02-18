@@ -1,4 +1,5 @@
 let urlsArray = require("./urls")
+const recipeScraper = require("recipe-scraper");
 
 let urli = [];
 
@@ -11,9 +12,8 @@ console.log(urli)
 const scraperObject = {
 
         urls: urli,
-        // console.log(this.url),
         async scraper(browser){
-            for (let j = 1; j < 418; j++) {
+            for (let j = 0; j < 1; j++) {
                 let page = await browser.newPage();
                 console.log(`Navigating to ${this.urls[j]}...`);
                 await page.goto(this.urls[j]);
@@ -24,12 +24,23 @@ const scraperObject = {
                     links = links.map(el => el.querySelector('a').href)
                     return links;
                 });
-                console.log(urls);
                 urlsArray.push(urls);
                 console.log(urlsArray);
+                urlsArray.forEach(array => {
+                    array.forEach(url => {
+                        recipeScraper(url).then(recipe => {
+                            console.log(recipe)
+                            // do something with recipe
+                          }).catch(error => {
+                            // do something with error
+                          });
+                    })        
+                  })
             }
         }
     }
 
 
 module.exports = scraperObject;
+
+// module.exports = urlsArray;
