@@ -32,7 +32,7 @@ const scraperObject = {
                         recipeScraper(url).then(recipe => {
                             console.log(JSON.stringify(recipe))
                             console.log("-------------------------------------------------------")
-                            sendToDB(recipe);
+                            sendToDB();
                             // do something with recipe
                           }).catch(error => {
                             // do something with error
@@ -44,15 +44,24 @@ const scraperObject = {
     }
 
 
-function sendToDB(recipe){
+sendToDB = async (recipe) => {
     console.log("AAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAAAA")
-    axios({
-        method: 'post',
-        url: 'localhost:5000/api/todos',
-        data: JSON.stringify(recipe)
-      });
+    const location = "localhost:5000/api/todos";
+    const settings = {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(recipe)
+    };
+    try {
+        const fetchResponse = await fetch(location, settings);
+        const data = await fetchResponse.json();
+        return data;
+    } catch (e) {
+        return e;
+    }  
     console.log("================================================================================")
 }
 module.exports = scraperObject;
-
-// module.exports = urlsArray;
