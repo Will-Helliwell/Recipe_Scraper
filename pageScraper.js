@@ -1,3 +1,13 @@
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+mongoose
+    .connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
+    .then(() => console.log(`Dev Database connected successfully`))
+    .catch((err) => console.log(err));
+
+
+
 let urlsArray = require("./urls")
 const recipeScraper = require("recipe-scraper");
 

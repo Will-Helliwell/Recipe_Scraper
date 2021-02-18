@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.15",
     "puppeteer": "^7.1.0",
     "recipe-scraper": "^2.0.0"
   }
