@@ -1,15 +1,6 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
-
-mongoose
-    .connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
-    .then(() => console.log(`Dev Database connected successfully`))
-    .catch((err) => console.log(err));
-
-
-
 let urlsArray = require("./urls")
 const recipeScraper = require("recipe-scraper");
+const { default: axios } = require("axios");
 
 let urli = [];
 
@@ -39,7 +30,9 @@ const scraperObject = {
                 urlsArray.forEach(array => {
                     array.forEach(url => {
                         recipeScraper(url).then(recipe => {
-                            console.log(recipe)
+                            console.log(JSON.stringify(recipe))
+                            console.log("-------------------------------------------------------")
+                            sendToDB(recipe);
                             // do something with recipe
                           }).catch(error => {
                             // do something with error
@@ -51,6 +44,15 @@ const scraperObject = {
     }
 
 
+function sendToDB(recipe){
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAAAA")
+    axios({
+        method: 'post',
+        url: 'localhost:5000/api/todos',
+        data: JSON.stringify(recipe)
+      });
+    console.log("================================================================================")
+}
 module.exports = scraperObject;
 
 // module.exports = urlsArray;
