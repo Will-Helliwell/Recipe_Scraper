@@ -1,5 +1,7 @@
+let urlsArray = require("./urls")
+
 const scraperObject = {
-    url: 'https://www.bbcgoodfood.com/search/recipes?sort=-date',
+    url: 'https://www.bbcgoodfood.com/search/recipes/page/2/?sort=-date',
     async scraper(browser){
         let page = await browser.newPage();
         console.log(`Navigating to ${this.url}...`);
@@ -19,6 +21,8 @@ const scraperObject = {
             return links;
         });
         console.log(urls);
+        urlsArray.push(urls);
+        console.log(urlsArray);
 
     }
 }
