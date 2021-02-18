@@ -54,7 +54,6 @@ function sendToDB(){
                   });
             })        
           })
-    Recipy.create(recipe)
 }
 
 module.exports = scraperObject;
