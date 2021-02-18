@@ -2,6 +2,15 @@
 const recipeScraper = require("recipe-scraper");
 const urls = require("./urls")
 
+require("dotenv").config();
+const Recipy = require("./recipy")
+
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
+    .then(() => console.log(`Dev Database connected successfully`))
+    .catch((err) => console.log(err));
+
 // console.log(urls)
 
 // enter a supported recipe url as a parameter - returns a promise
@@ -26,20 +35,7 @@ const urls = require("./urls")
 // using Promise chaining
 recipeScraper("https://www.bbcgoodfood.com/recipes/easy-pancakes").then(recipe => {
     console.log(JSON.stringify(recipe))
-    fetch('https://localhost:5000/api/todos', {
-    method: 'POST', // or 'PUT'
-    headers: {
-    'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(recipe),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    Recipy.create(recipe)
 
     // do something with recipe
   }).catch(error => {

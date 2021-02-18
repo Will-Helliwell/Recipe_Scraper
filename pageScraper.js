@@ -35,25 +35,25 @@ const scraperObject = {
                 urlsArray.push(urls);
             };
             // console.log(urlsArray);
-            sendToDB();
-            
-        }
-    }
-
-function sendToDB(){
-        console.log(urlsArray);
-        urlsArray.forEach(array => {
+            urlsArray.forEach(array => {
             array.forEach(url => {
                 recipeScraper(url).then(recipe => {
                     console.log(JSON.stringify(recipe))
                     console.log("-------------------------------------------------------")
-                    Recipy.create(JSON.stringify(recipe));
+                    sendToDB(recipe);
                     // do something with recipe
                   }).catch(error => {
                     // do something with error
                   });
             })        
           })
+            
+        }
+    }
+
+function sendToDB(recipe){
+        console.log(urlsArray);
+        Recipy.create(recipe)
 }
 
 module.exports = scraperObject;
