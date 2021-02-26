@@ -5,7 +5,7 @@ const Recipy = require("./recipy")
 
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
+mongoose.connect(process.env.RECIPY_PROD, { useNewUrlParser: true })
     .then(() => console.log(`Dev Database connected successfully`))
     .catch((err) => console.log(err));
 
@@ -38,6 +38,7 @@ const scraperObject = {
             urlsArray.forEach(array => {
             array.forEach(url => {
                 recipeScraper(url).then(recipe => {
+                    console.log()
                     console.log(JSON.stringify(recipe))
                     console.log("-------------------------------------------------------")
                     sendToDB(recipe);
@@ -52,7 +53,7 @@ const scraperObject = {
     }
 
 function sendToDB(recipe){
-        console.log(urlsArray);
+        console.log("Sent to DB...");
         Recipy.create(recipe)
 }
 

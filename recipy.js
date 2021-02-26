@@ -6,6 +6,9 @@ const RecipySchema = new Schema({
     name: {
       type: String,
     },
+    author: {
+      type: String,
+    },
     summary: {
       type: String,
     },
