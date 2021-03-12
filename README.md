@@ -10,15 +10,16 @@ All recipe rights belong to bbcoodfood.com. This project is solely for education
 | Technology    | Use                           |
 | ------------- | ----------------------------- |
 | Node          | Back-end JavaScript Framework |
-| Express       | Web application framework     |               
-| MongoDB       | Database                      |
+| Express       | Web application framework     |
 | Puppeteer     | Headless browser controller   |
+| MongoDB       | Database                      |
+| Mongoose      | ORM                           |
 
 ## **Contributors**
 
 This repository is cloned from the original pair project, allowing me to make changes and insert into my own database.
 
-Original contributors - AJ Montgomery.
+Other contributors - AJ Montgomery.
 
 ## **Links to Repositories**
 
