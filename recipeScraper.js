@@ -1,15 +1,13 @@
 // import the module
 const recipeScraper = require("recipe-scraper");
 const urls = require("./urls")
-
 require("dotenv").config();
 const Recipy = require("./recipy")
-
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
-    .then(() => console.log(`Dev Database connected successfully`))
-    .catch((err) => console.log(err));
+// mongoose.connect(process.env.RECIPY_DEV, { useNewUrlParser: true })
+//     .then(() => console.log(`Dev Database connected successfully`))
+//     .catch((err) => console.log(err));
 
 // console.log(urls)
 
